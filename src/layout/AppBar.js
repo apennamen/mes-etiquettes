@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map.js';
 import '@amber-ds/components/button';
 
@@ -15,15 +15,15 @@ const buttonStyle = {
     alignItems: 'center',
 }
 
-export const AppBar = (title, onClick) => html`
+export const AppBar = (title, actionButton) => {
+    return html`
     <header class="row" style=${styleMap(titleStyle)}>
         <div class="col-8">
             <h1>${title}</h1>
         </div>
         <div class="col-4" style=${styleMap(buttonStyle)}>
-            <amber-button nooutline @click=${onClick}>
-                Mes choix
-            </amber-button>
+            ${actionButton || nothing}
         </div>
     </header>
 `;
+}

@@ -1,10 +1,11 @@
 import { LitElement, html } from 'lit-element';
 import '@amber-ds/components/modal';
 import '@amber-ds/components/progress-bar';
+import '@amber-ds/components/button';
 import { connect } from 'pwa-helpers';
 
-import { AppBar } from './AppBar';
-import { AppCard } from './AppCard';
+import { AppBar } from './layout/AppBar';
+import { AppCard } from './layout/AppCard';
 import { store } from './redux/store';
 import { selectChoice } from './redux/actions'
 
@@ -16,12 +17,17 @@ const onButtonClick = () => {
   document.getElementById('choice-modal').showModal();
 };
 
+const actionButton = html`
+    <amber-button nooutline @click=${onButtonClick}>
+        Mes choix
+    </amber-button>`;
+
 export class MesEtiquettes extends connect(store)(LitElement) {
   static get properties() {
     return {
       choices: { type: Array },
       title: { type: String },
-      complete: { type: Boolean },
+      progress: { type: Number },
     };
   }
 
@@ -56,7 +62,7 @@ export class MesEtiquettes extends connect(store)(LitElement) {
         }
       </style>
       <div>
-        ${AppBar(this.title, onButtonClick)}
+        ${AppBar(this.title, actionButton)}
         <div class="row content">
           <div class="col-2"></div>
           ${

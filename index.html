@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+  <link href="./node_modules/@amber-ds/visual/dist/index.css" rel="stylesheet">
+  <title>Mes étiquettes</title>
+</head>
+
+<body>
+  <mes-etiquettes></mes-etiquettes>
+
+  <script>
+    // HACK(keanulee): The Redux package assumes `process` exists - mock it here before
+    // the module is loaded.
+    window.process = {
+      env: {
+        NODE_ENV: 'production'
+      }
+    };
+  </script>
+  <script type="module" src="./src/mes-etiquettes.js"></script>
+</body>
+
+</html>

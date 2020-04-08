@@ -11,6 +11,11 @@ function initRouter() {
       component: 'mes-etiquettes',
     },
     {
+      path: '/settings',
+      component: 'app-settings',
+      action: () => import('./app-settings'),
+    },
+    {
       path: '(.*)',
       component: 'not-found',
       action: () => import('./not-found'),

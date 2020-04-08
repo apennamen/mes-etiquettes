@@ -1,7 +1,9 @@
 import { LitElement, html } from 'lit-element';
+import { styleMap } from 'lit-html/directives/style-map.js';
 // eslint-disable-next-line no-unused-vars
-import { WiredButton, WiredDialog, WiredDivider } from 'wired-elements';
+import { WiredButton, WiredDialog, WiredDivider, WiredIconButton } from 'wired-elements';
 import { connect } from 'pwa-helpers';
+import '@material/mwc-icon';
 
 import './layout/app-progress.js';
 import { AppBar } from './layout/AppBar.js';
@@ -24,18 +26,24 @@ const actionButton = html`
   </wired-button>
 `;
 
+const settingButton = html`
+  <a href="/settings">
+    <wired-icon-button elevation="2" style=${styleMap({ color: 'black' })}>
+      <mwc-icon>settings</mwc-icon>
+    </wired-icon-button>
+  </a>
+`;
+
 export class MesEtiquettes extends connect(store)(LitElement) {
   static get properties() {
     return {
       choices: { type: Array },
-      title: { type: String },
       progress: { type: Number },
     };
   }
 
-  stateChanged({ choices, layout, progress, selectedChoices }) {
+  stateChanged({ choices, progress, selectedChoices }) {
     this.choices = choices;
-    this.title = layout.title;
     this.progress = progress;
     this.selectedChoices = selectedChoices;
   }
@@ -59,17 +67,16 @@ export class MesEtiquettes extends connect(store)(LitElement) {
           padding-bottom: 1em;
           background-color: white;
         }
+        .footer-content {
+          display: flex;
+          justify-content: space-around;
+        }
         #divider {
           padding-bottom: 1em;
         }
-        #progress {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        }
       </style>
       <div class="container">
-        ${AppBar(this.title, actionButton)}
+        ${AppBar('Mes étiquettes', actionButton)}
         <div class="content">
           ${this.progress === 100
             ? html`
@@ -79,7 +86,10 @@ export class MesEtiquettes extends connect(store)(LitElement) {
         </div>
         <footer class="footer">
           <wired-divider id="divider" elevation="2"></wired-divider>
-          <app-progress id="progress" value=${this.progress} percentage></app-progress>
+          <div class="footer-content">
+            <app-progress value=${this.progress} percentage></app-progress>
+            ${settingButton}
+          </div>
         </footer>
       </div>
 

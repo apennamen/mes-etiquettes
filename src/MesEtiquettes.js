@@ -1,26 +1,28 @@
 import { LitElement, html } from 'lit-element';
-import '@amber-ds/components/modal';
-import '@amber-ds/components/progress-bar';
-import '@amber-ds/components/button';
+// eslint-disable-next-line no-unused-vars
+import { WiredButton, WiredDialog, WiredDivider } from 'wired-elements';
 import { connect } from 'pwa-helpers';
 
-import { AppBar } from './layout/AppBar';
-import { AppCard } from './layout/AppCard';
-import { store } from './redux/store';
-import { selectChoice } from './redux/actions'
+import './layout/app-progress.js';
+import { AppBar } from './layout/AppBar.js';
+import { AppCard } from './layout/AppCard.js';
+import { store } from './redux/store.js';
+import { selectChoice } from './redux/actions.js';
 
 const onSelectChoice = title => {
   store.dispatch(selectChoice(title));
 };
 
-const onButtonClick = () => {
-  document.getElementById('choice-modal').showModal();
+const onToggleDialog = () => {
+  const dialog = document.getElementById('choice-modal');
+  dialog.open = !dialog.open;
 };
 
 const actionButton = html`
-    <amber-button nooutline @click=${onButtonClick}>
-        Mes choix
-    </amber-button>`;
+  <wired-button elevation="2" @click=${onToggleDialog}>
+    Mes choix
+  </wired-button>
+`;
 
 export class MesEtiquettes extends connect(store)(LitElement) {
   static get properties() {
@@ -31,66 +33,62 @@ export class MesEtiquettes extends connect(store)(LitElement) {
     };
   }
 
-  stateChanged({choices, layout, progress, selectedChoices}) { 
-      this.choices = choices;
-      this.title = layout.title;
-      this.progress = progress;
-      this.selectedChoices = selectedChoices;
+  stateChanged({ choices, layout, progress, selectedChoices }) {
+    this.choices = choices;
+    this.title = layout.title;
+    this.progress = progress;
+    this.selectedChoices = selectedChoices;
   }
 
   render() {
     return html`
       <style>
+        .container {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: space-between;
+        }
         .content {
+          height: 100%;
           padding: 1em;
-          margin-bottom: 72px;
+          display: flex;
+          align-items: stretch;
         }
         .footer {
-          width: 100%;
-          padding: 1em;
-          border-top: 1px solid #e0e0e0;
+          padding-bottom: 1em;
           background-color: white;
-          position: fixed;
-          bottom: 0;
         }
-        .card {
-            border: 1px solid #e0e0e0;
+        #divider {
+          padding-bottom: 1em;
         }
-        .card:hover {
-            border: 2px solid #e0e0e0;
-            cursor: pointer;
+        #progress {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
         }
       </style>
-      <div>
+      <div class="container">
         ${AppBar(this.title, actionButton)}
-        <div class="row content">
-          <div class="col-2"></div>
-          ${
-            this.progress === 100 ?
-              html`<div class="col-12">Vous avez terminé toutes les étapes !</div>` :
-              this.choices.map(choice => AppCard(choice.title, choice.img, onSelectChoice))
-          }
-          <div class="col-2"></div>
+        <div class="content">
+          ${this.progress === 100
+            ? html`
+                <div>Vous avez terminé toutes les étapes !</div>
+              `
+            : this.choices.map(choice => AppCard(choice.title, choice.img, onSelectChoice))}
         </div>
-        <footer class="row footer">
-          <amber-progress-bar
-            class="col-12"
-            label="Progrès"
-            value=${this.progress}
-          ></amber-progress-bar>
+        <footer class="footer">
+          <wired-divider id="divider" elevation="2"></wired-divider>
+          <app-progress id="progress" value=${this.progress} percentage></app-progress>
         </footer>
       </div>
-      
-      <amber-modal
-          id="choice-modal"
-          title="Vos choix"
-          >
-          ${
-            this.selectedChoices.length ?
-              this.selectedChoices.map(choice => html`<p>${choice}</div>`) :
-              html`<p>Aucun choix effectué</div>`
-          }
-        </amber-modal>
+
+      <wired-dialog id="choice-modal" title="Vos choix">
+        ${this.selectedChoices.length
+          ? this.selectedChoices.map(choice => html`<p>${choice}</div>`)
+          : html`<p>Aucun choix effectué</div>`}
+        <wired-button @click=${onToggleDialog}>Fermer</wired-button>
+      </wired-dialog>
     `;
   }
 
@@ -98,7 +96,7 @@ export class MesEtiquettes extends connect(store)(LitElement) {
    * Trick to prevent the use of Shadow DOM
    */
   createRenderRoot() {
-      // We don't want shadow dom in order to use Amber css
-      return this;
-    }
+    // We don't want shadow dom in order to use global css
+    return this;
+  }
 }

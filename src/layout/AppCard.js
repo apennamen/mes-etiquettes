@@ -1,14 +1,24 @@
 import { html } from 'lit-html';
-import '@amber-ds/components/card';
+import { WiredImage, WiredCard } from "wired-elements";
 
 export const AppCard = (title, img, onClick) =>  html`
-    <div class="col-12 col-sm-12 col-md-4 card" @click=${() => onClick(title)}>
-        <amber-card
-            title=${title}
-            taxonomy="Morale"
-            background="light"
-            media="/img/${img}"
-            >
-        </amber-card>
+    <style>
+        .card > * {
+          background-color: white;
+        }
+        .card > wired-card:hover {
+            cursor: pointer;
+        }
+        .card {
+          padding: 1em;
+          text-align: center;
+        }
+    </style>
+    <div class="card">
+        <wired-card  @click=${() => onClick(title)}>
+            <wired-image src="/img/${img}">
+            </wired-image>
+            <p>${title}</p>
+        </wired-card>
     </div>
 `;

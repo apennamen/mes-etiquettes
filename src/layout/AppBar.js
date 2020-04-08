@@ -1,29 +1,28 @@
 import { html, nothing } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map.js';
-import '@amber-ds/components/button';
+import { WiredDivider } from "wired-elements";
 
-const titleStyle = {
-    backgroundColor: 'white',
-    padding: '1em',
-    borderBottom: '1px solid #e0e0e0',
-}
-
-const buttonStyle = {
+const style = {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: '1em',
+    paddingRight: '1em',
 }
 
 export const AppBar = (title, actionButton) => {
     return html`
-    <header class="row" style=${styleMap(titleStyle)}>
-        <div class="col-8">
-            <h1>${title}</h1>
-        </div>
-        <div class="col-4" style=${styleMap(buttonStyle)}>
+    <style>
+        .header {
+          background-color: white;
+        }
+    </style>
+    <header class="header">
+        <div  style=${styleMap(style)}>
+            <h2>${title}</h2>
             ${actionButton || nothing}
         </div>
+        <wired-divider elevation="2"></wired-divider>
     </header>
 `;
 }

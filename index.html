@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <base href="/">
-  <link href="./node_modules/@amber-ds/visual/dist/index.css" rel="stylesheet">
   <title>Mes étiquettes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <canvas id="canvas"></canvas>
   <main></main>
 
   <script>
@@ -23,6 +24,18 @@
     };
   </script>
   <script type="module" src="./src/index.js"></script>
+  <style>
+    body, html, main {
+      margin: 0;
+      height:100%;
+      font-family: 'Gloria Hallelujah', cursive;
+      overflow: hidden;
+    }
+    #canvas {
+      position: absolute;
+      z-index: -1;
+    }
+  </style>
 </body>
 
 </html>

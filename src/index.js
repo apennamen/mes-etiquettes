@@ -1,26 +1,20 @@
 import { Router } from '@vaadin/router';
 import rough from 'roughjs';
 
-import './mes-etiquettes';
+import './mes-etiquettes.js';
 
-window.addEventListener('load', () => { 
-    initRouter();
-    initCanvas();
-  });
-  
 function initRouter() {
-  const router = new Router(document.querySelector('main')); 
+  const router = new Router(document.querySelector('main'));
   router.setRoutes([
     {
       path: '/',
-      component: 'mes-etiquettes'
+      component: 'mes-etiquettes',
     },
     {
-      path: '(.*)', 
+      path: '(.*)',
       component: 'not-found',
-      action: () =>
-        import('./not-found')
-    }
+      action: () => import('./not-found'),
+    },
   ]);
 }
 
@@ -38,3 +32,8 @@ function initCanvas() {
     fillWeight: 2,
   });
 }
+
+window.addEventListener('load', () => {
+  initRouter();
+  initCanvas();
+});

@@ -2,22 +2,6 @@
 # yarn lockfile v1
 
 
-"@amber-ds/components@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@amber-ds/components/-/components-1.2.6.tgz#19e35acde4f6bb55eed02603fcbd173a718a8e63"
-  integrity sha512-xDLiXYBB8KW60oqH3K9CcLD4WcDSCkw9XFpLks7ocysciuWfsMs9jt4RteLz0HtO8RhGToRTDxxlBOVX3kRWBw==
-  dependencies:
-    "@amber-ds/visual" "1.0.2"
-    flatpickr "4.5.7"
-    lit-element "2.1.0"
-
-"@amber-ds/visual@1.0.2", "@amber-ds/visual@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@amber-ds/visual/-/visual-1.0.2.tgz#6f7d8da5f5e07e248dd87d841eae638f25ec3235"
-  integrity sha512-p0KDs5tk8T9pCf/dMIlqdrJC/hRmYWNc/1UpG8o1F+W5r5oLz/Rc0W0oC2DQkoRkepykM/EtiuRLlc66yJ1v1Q==
-  dependencies:
-    normalize.css "8.0.1"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -2414,11 +2398,6 @@ flat-cache@^2.0.1:
     rimraf "2.6.3"
     write "1.0.3"
 
-flatpickr@4.5.7:
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.7.tgz#6efc0d93c65547aa77294205c67830ebabe3565c"
-  integrity sha512-JqPfihUc9A/j9QAsh6otoARmMyUauPE17vRBEG+ThJwbl8zAq4ssGpxlPK3wWM/i8EFxkHg9UuVo0ds7XluKxw==
-
 flatted@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
@@ -3367,13 +3346,6 @@ listr@^0.14.2:
     p-map "^2.0.0"
     rxjs "^6.3.3"
 
-lit-element@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.1.0.tgz#85bc3f1da0227f4b13de8a1be978229b9fa327e9"
-  integrity sha512-0z/KHm1xZweivfOVRr8AKR06+D3k02u15m9s4jkuRdnGe5wfmEwePzrQQBsSZNILdnfJvfo3TJOeGhBCVZaPbw==
-  dependencies:
-    lit-html "^1.0.0"
-
 lit-element@^2.0.1, lit-element@^2.2.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.3.1.tgz#73343b978fa1e73d60526c6bb6ad60f53a16c343"
@@ -3735,11 +3707,6 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
-
-normalize.css@8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
-  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 npm-path@^2.0.2:
   version "2.0.4"
@@ -4494,7 +4461,7 @@ rollup@^1.15.4:
     "@types/node" "*"
     acorn "^7.1.0"
 
-roughjs@^3.1.0:
+roughjs@3.1.0, roughjs@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/roughjs/-/roughjs-3.1.0.tgz#d011b9239fd1790e487bbfa204c98f1c786966ac"
   integrity sha512-WJIKyWxBlEIuMeK0foUZD1KVYzT6Dn62ksawZrlu3BzxUxgtPdnlCMDgX/C3N5gxj/AMRazstKOFm70tqTo5Bw==

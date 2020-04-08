@@ -46,13 +46,12 @@
   "author": "mes-etiquettes",
   "license": "MIT",
   "dependencies": {
-    "@amber-ds/components": "^1.2.6",
-    "@amber-ds/visual": "^1.0.2",
     "@vaadin/router": "^1.7.1",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
     "pwa-helpers": "^0.9.1",
     "redux": "^4.0.5",
+    "roughjs": "3.1.0",
     "wired-elements": "^2.0.5"
   }
 }

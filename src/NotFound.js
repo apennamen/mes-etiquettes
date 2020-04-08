@@ -1,4 +1,5 @@
 import { html, LitElement } from 'lit-element';
+import { WiredLink } from "wired-elements"
 
 import { AppBar } from './layout/AppBar';
 
@@ -6,11 +7,9 @@ export class NotFound extends LitElement {
   render() {
     return html`
         ${AppBar('Vous vous êtes égaré !')}
-      <div class="container">
           <p>
-            <a href="/">Retour à l'application</a>
+            <wired-link elevation="2" href="/">Retour à l'application</wired-link>
           </p>
-      </div>
     `;
   }
 

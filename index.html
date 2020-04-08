@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <canvas id="canvas"></canvas>
   <main></main>
 
   <script>
@@ -24,9 +25,15 @@
   </script>
   <script type="module" src="./src/index.js"></script>
   <style>
-    html, body {
+    body, html, main {
+      margin: 0;
+      height:100%;
       font-family: 'Gloria Hallelujah', cursive;
-      height: 100%;
+      overflow: hidden;
+    }
+    #canvas {
+      position: absolute;
+      z-index: -1;
     }
   </style>
 </body>

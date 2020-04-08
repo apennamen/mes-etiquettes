@@ -1,7 +1,9 @@
 import { LitElement, html } from 'lit-element';
-import { WiredButton, WiredProgress, WiredDialog, WiredDivider } from "wired-elements";
+import { WiredButton, WiredDialog, WiredDivider } from 'wired-elements';
 import { connect } from 'pwa-helpers';
+import rough from 'roughjs';
 
+import './layout/app-progress';
 import { AppBar } from './layout/AppBar';
 import { AppCard } from './layout/AppCard';
 import { store } from './redux/store';
@@ -40,23 +42,32 @@ export class MesEtiquettes extends connect(store)(LitElement) {
   render() {
     return html`
       <style>
-        .content {
-          padding: 1em;
-          margin-bottom: 72px;
+        .container {
+          height: 100%;
           display: flex;
+          flex-direction: column;
+          align-content: space-between;
+        }
+        .content {
+          height:100%;
+          padding: 1em;
+          display: flex;
+          align-items: stretch;
         }
         .footer {
-          width: 100%;
-          padding: 1em;
+          padding-bottom: 1em;
           background-color: white;
-          position: fixed;
-          bottom: 0;
         }
-        .card:hover {
-            cursor: pointer;
+        #divider {
+          padding-bottom: 1em;
+        }
+        #progress {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
         }
       </style>
-      <div>
+      <div class="container">
         ${AppBar(this.title, actionButton)}
         <div class="content">
           ${
@@ -66,8 +77,8 @@ export class MesEtiquettes extends connect(store)(LitElement) {
           }
         </div>
         <footer class="footer">
-          <wired-divider elevation="2"></wired-divider>
-          <wired-progress value=${this.progress} ?percentage=${true}></wired-progress>
+          <wired-divider id="divider" elevation="2"></wired-divider>
+          <app-progress id="progress" value=${this.progress} ?percentage=${true}></app-progress>
         </footer>
       </div>
       

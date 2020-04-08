@@ -3,17 +3,23 @@ import { styleMap } from 'lit-html/directives/style-map.js';
 import { WiredDivider } from "wired-elements";
 
 const style = {
-    backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: '1em',
+    paddingRight: '1em',
 }
 
 export const AppBar = (title, actionButton) => {
     return html`
-    <header>
+    <style>
+        .header {
+          background-color: white;
+        }
+    </style>
+    <header class="header">
         <div  style=${styleMap(style)}>
-            <h1>${title}</h1>
+            <h2>${title}</h2>
             ${actionButton || nothing}
         </div>
         <wired-divider elevation="2"></wired-divider>

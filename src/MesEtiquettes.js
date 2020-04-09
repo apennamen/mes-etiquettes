@@ -30,7 +30,8 @@ export class MesEtiquettes extends connect(store)(LitElement) {
     };
   }
 
-  stateChanged({ choices, progress, selectedChoices }) {
+  stateChanged({ quizz }) {
+    const { choices, progress, selectedChoices } = quizz;
     this.choices = choices;
     this.progress = progress;
     this.selectedChoices = selectedChoices;

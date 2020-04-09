@@ -20,7 +20,8 @@ export class Settings extends connect(store)(LitElement) {
     };
   }
 
-  stateChanged({ fonts, selectedFont }) {
+  stateChanged({ settings }) {
+    const { fonts, selectedFont } = settings;
     this.fonts = fonts;
     this.selectedFont = selectedFont;
   }

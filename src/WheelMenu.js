@@ -7,6 +7,19 @@ export class WheelMenu extends LitElement {
       #svg {
         width: 100%;
       }
+
+      .menuItem:hover {
+        cursor: pointer;
+      }
+
+      .menuItem:hover > g {
+        transform: scale(0.9);
+        transition: transform 0.3s ease-out;
+      }
+
+      .menuItem > g {
+        transition: transform 0.5s ease-out;
+      }
     `;
   }
 
@@ -44,6 +57,7 @@ export class WheelMenu extends LitElement {
       group.appendChild(quart);
       group.appendChild(label);
       group.setAttribute('transform', `translate(210,210) rotate(${i * 90})`);
+      group.setAttribute('class', 'menuItem');
       group.onclick = () => this.dispatchEvent(event);
 
       svg.appendChild(group);

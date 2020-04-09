@@ -1,3 +1,4 @@
+// Old module to be able to have custom background
 import rough from 'roughjs';
 
 function initCanvas() {

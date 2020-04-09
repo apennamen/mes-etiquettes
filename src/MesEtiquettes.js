@@ -14,14 +14,6 @@ const onSelectChoice = title => {
   store.dispatch(selectChoice(title));
 };
 
-const settingButton = html`
-  <a href="/settings">
-    <wired-icon-button elevation="2" style="color: black">
-      <mwc-icon>settings</mwc-icon>
-    </wired-icon-button>
-  </a>
-`;
-
 export class MesEtiquettes extends connect(store)(LitElement) {
   static get properties() {
     return {
@@ -44,9 +36,9 @@ export class MesEtiquettes extends connect(store)(LitElement) {
     };
 
     const actionButton = html`
-      <wired-button elevation="2" @click=${onToggleDialog}>
-        Mes choix
-      </wired-button>
+      <wired-icon-button elevation="2" @click=${onToggleDialog}>
+        <mwc-icon>list</mwc-icon>
+      </wired-icon-button>
     `;
     return html`
       <style>
@@ -74,7 +66,7 @@ export class MesEtiquettes extends connect(store)(LitElement) {
           padding-bottom: 1em;
         }
       </style>
-      ${AppBar('Mes étiquettes', actionButton)}
+      ${AppBar('Mes étiquettes')}
       <section class="content">
         ${this.progress === 100
           ? html`
@@ -86,7 +78,7 @@ export class MesEtiquettes extends connect(store)(LitElement) {
         <wired-divider id="divider" elevation="2"></wired-divider>
         <div class="footer-content">
           <app-progress value=${this.progress} percentage></app-progress>
-          ${settingButton}
+          ${actionButton}
         </div>
       </footer>
 

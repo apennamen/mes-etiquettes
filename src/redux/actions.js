@@ -7,7 +7,11 @@ export const selectChoice = title => ({
 
 export const SELECT_FONT = 'SELECT_FONT';
 
-export const selectFont = font => ({
-  type: SELECT_FONT,
-  value: font,
-});
+export const selectFont = font => {
+  const root = document.getElementsByTagName('html')[0];
+  root.style.setProperty('font-family', font);
+  return {
+    type: SELECT_FONT,
+    value: font,
+  };
+};

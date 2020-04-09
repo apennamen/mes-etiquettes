@@ -23,8 +23,6 @@ export class Settings extends connect(store)(LitElement) {
   stateChanged({ fonts, selectedFont }) {
     this.fonts = fonts;
     this.selectedFont = selectedFont;
-    const root = document.getElementsByTagName('html')[0];
-    root.style.setProperty('font-family', this.selectedFont);
   }
 
   render() {
@@ -40,7 +38,7 @@ export class Settings extends connect(store)(LitElement) {
       ${AppBar('Paramètres')}
       <wired-card class="setting-card">
         <p>
-          <wired-link elevation="2" href="/">Retour à l'application</wired-link>
+          Choix de la police:
         </p>
         <wired-combo selected=${this.selectedFont} @selected=${onSelectFont}>
           ${this.fonts.map(
@@ -51,11 +49,10 @@ export class Settings extends connect(store)(LitElement) {
             `,
           )}
         </wired-combo>
+        <p>
+          <wired-link elevation="2" href="/">Retour à l'application</wired-link>
+        </p>
       </wired-card>
     `;
-  }
-
-  createRenderRoot() {
-    return this;
   }
 }

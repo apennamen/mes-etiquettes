@@ -1,24 +1,22 @@
 import { html, nothing } from 'lit-html';
-import { styleMap } from 'lit-html/directives/style-map.js';
 // eslint-disable-next-line no-unused-vars
 import { WiredDivider } from 'wired-elements';
-
-const style = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  paddingLeft: '1em',
-  paddingRight: '1em',
-};
 
 export const AppBar = (title, actionButton) => html`
   <style>
     .header {
       background-color: white;
     }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
   </style>
   <header class="header">
-    <div style=${styleMap(style)}>
+    <div class="header-content">
       <h2>${title}</h2>
       ${actionButton || nothing}
     </div>

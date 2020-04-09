@@ -1,5 +1,4 @@
 import { LitElement, html } from 'lit-element';
-import { styleMap } from 'lit-html/directives/style-map.js';
 // eslint-disable-next-line no-unused-vars
 import { WiredButton, WiredDialog, WiredDivider, WiredIconButton } from 'wired-elements';
 import { connect } from 'pwa-helpers';
@@ -15,20 +14,9 @@ const onSelectChoice = title => {
   store.dispatch(selectChoice(title));
 };
 
-const onToggleDialog = () => {
-  const dialog = document.getElementById('choice-modal');
-  dialog.open = !dialog.open;
-};
-
-const actionButton = html`
-  <wired-button elevation="2" @click=${onToggleDialog}>
-    Mes choix
-  </wired-button>
-`;
-
 const settingButton = html`
   <a href="/settings">
-    <wired-icon-button elevation="2" style=${styleMap({ color: 'black' })}>
+    <wired-icon-button elevation="2" style="color: black">
       <mwc-icon>settings</mwc-icon>
     </wired-icon-button>
   </a>
@@ -49,9 +37,19 @@ export class MesEtiquettes extends connect(store)(LitElement) {
   }
 
   render() {
+    const onToggleDialog = () => {
+      const dialog = this.shadowRoot.getElementById('choice-modal');
+      dialog.open = !dialog.open;
+    };
+
+    const actionButton = html`
+      <wired-button elevation="2" @click=${onToggleDialog}>
+        Mes choix
+      </wired-button>
+    `;
     return html`
       <style>
-        .container {
+        :host {
           height: 100%;
           display: flex;
           flex-direction: column;
@@ -75,23 +73,21 @@ export class MesEtiquettes extends connect(store)(LitElement) {
           padding-bottom: 1em;
         }
       </style>
-      <div class="container">
-        ${AppBar('Mes étiquettes', actionButton)}
-        <div class="content">
-          ${this.progress === 100
-            ? html`
-                <div>Vous avez terminé toutes les étapes !</div>
-              `
-            : this.choices.map(choice => AppCard(choice.title, choice.img, onSelectChoice))}
+      ${AppBar('Mes étiquettes', actionButton)}
+      <section class="content">
+        ${this.progress === 100
+          ? html`
+              <div>Vous avez terminé toutes les étapes !</div>
+            `
+          : this.choices.map(choice => AppCard(choice.title, choice.img, onSelectChoice))}
+      </section>
+      <footer class="footer">
+        <wired-divider id="divider" elevation="2"></wired-divider>
+        <div class="footer-content">
+          <app-progress value=${this.progress} percentage></app-progress>
+          ${settingButton}
         </div>
-        <footer class="footer">
-          <wired-divider id="divider" elevation="2"></wired-divider>
-          <div class="footer-content">
-            <app-progress value=${this.progress} percentage></app-progress>
-            ${settingButton}
-          </div>
-        </footer>
-      </div>
+      </footer>
 
       <wired-dialog id="choice-modal" title="Vos choix">
         ${this.selectedChoices.length
@@ -100,13 +96,5 @@ export class MesEtiquettes extends connect(store)(LitElement) {
         <wired-button @click=${onToggleDialog}>Fermer</wired-button>
       </wired-dialog>
     `;
-  }
-
-  /**
-   * Trick to prevent the use of Shadow DOM
-   */
-  createRenderRoot() {
-    // We don't want shadow dom in order to use global css
-    return this;
   }
 }

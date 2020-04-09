@@ -1,4 +1,4 @@
-import { SELECT_CHOICE, SELECT_FONT } from './actions.js';
+import { SELECT_CHOICE } from './actions.js';
 
 const steps = [
   [
@@ -11,13 +11,9 @@ const steps = [
   ],
 ];
 
-const fonts = ['Gloria Hallelujah', 'Kalam'];
-
 const INITIAL_STATE = {
   step: 0,
   choices: steps[0],
-  fonts,
-  selectedFont: fonts[0],
   selectedChoices: [],
   progress: 0,
 };
@@ -34,11 +30,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
         choices: progress === 100 ? [] : steps[newStep],
         selectedChoices: [...state.selectedChoices, value],
         progress,
-      };
-    case SELECT_FONT:
-      return {
-        ...state,
-        selectedFont: value,
       };
     default:
       return state;

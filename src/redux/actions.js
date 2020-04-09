@@ -8,8 +8,8 @@ export const selectChoice = title => ({
 export const SELECT_FONT = 'SELECT_FONT';
 
 export const selectFont = font => {
-  const root = document.getElementsByTagName('html')[0];
-  root.style.setProperty('font-family', font);
+  const root = document.documentElement;
+  root.style.setProperty('font-family', `${font}, cursive`);
   return {
     type: SELECT_FONT,
     value: font,

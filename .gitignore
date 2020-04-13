@@ -19,3 +19,6 @@
 # build
 /_site/
 /dist/
+
+# local dependencies
+/lib/

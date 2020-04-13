@@ -1,8 +1,9 @@
 import { LitElement, html } from 'lit-element';
 // eslint-disable-next-line no-unused-vars
 import { WiredButton, WiredDialog, WiredDivider, WiredIconButton } from 'wired-elements';
+// eslint-disable-next-line no-unused-vars
+import { WiredIcon } from 'wired-icon';
 import { connect } from 'pwa-helpers';
-import '@material/mwc-icon';
 
 import './layout/app-progress.js';
 import { AppBar } from './layout/AppBar.js';
@@ -37,7 +38,7 @@ export class MesEtiquettes extends connect(store)(LitElement) {
 
     const actionButton = html`
       <wired-icon-button elevation="2" @click=${onToggleDialog}>
-        <mwc-icon>list</mwc-icon>
+        <wired-icon style="width: 30px" icon="list"></wired-icon>
       </wired-icon-button>
     `;
     return html`

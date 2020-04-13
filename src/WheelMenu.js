@@ -13,8 +13,8 @@ export class WheelMenu extends LitElement {
       }
 
       .menuItem:hover > g {
-        transform: scale(0.9);
-        transition: transform 0.3s ease-out;
+        transform: scale(1.04);
+        transition: transform 0.2s ease-out;
       }
 
       .menuItem > g {
@@ -66,7 +66,7 @@ export class WheelMenu extends LitElement {
 
   render() {
     return html`
-      <svg id="svg" viewBox="0 0 420 420"></svg>
+      <svg id="svg" viewBox="0 0 440 440"></svg>
     `;
   }
 }

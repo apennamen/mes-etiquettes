@@ -2,7 +2,7 @@ import { Router } from '@vaadin/router';
 
 import './home-view.js';
 
-function initRouter() {
+(function initRouter() {
   const router = new Router(document.querySelector('main'));
   router.setRoutes([
     {
@@ -25,8 +25,4 @@ function initRouter() {
       action: () => import('./not-found'),
     },
   ]);
-}
-
-window.addEventListener('load', () => {
-  initRouter();
-});
+})();
